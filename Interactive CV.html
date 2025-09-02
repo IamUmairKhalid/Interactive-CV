@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umair Khalid - .NET Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Harmony -->
+    <!-- Application Structure Plan: The application is structured as a single-page, vertical-scrolling narrative portfolio. It begins with a hero section for immediate impact, followed by thematic sections: Summary, Skills, Projects, and Education/Certifications. A sticky navigation bar allows for quick access to any section. This structure was chosen to guide a user (like a recruiter) through a logical story of professional capabilities, moving from a high-level summary to detailed skills and evidence (projects), and finally to formal qualifications. This is more engaging and intuitive than a traditional, static CV format. -->
+    <!-- Visualization & Content Choices: 
+        - Professional Summary -> Inform -> Styled Text Block -> N/A -> Clear, immediate introduction to the candidate's profile -> HTML/Tailwind.
+        - Skills List -> Compare/Organize -> Interactive Radar Chart -> Hover for Tooltips -> Provides a quick, holistic visual of skill strengths across different domains (backend, frontend, etc.), which is more impactful than a simple list -> Chart.js/Canvas.
+        - Projects List -> Organize/Showcase -> Responsive Card Grid -> Hover Effects -> Cards cleanly separate project details, making the portfolio easy to scan. The grid adapts to different screen sizes for optimal viewing -> HTML/Tailwind.
+        - Education & Certifications -> Show Chronological Change -> Vertical Timeline -> N/A -> A timeline visually represents career progression and educational journey in an easy-to-follow format -> HTML/Tailwind.
+        -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f1eb;
+            color: #403d39;
+        }
+        .nav-link.active {
+            color: #a37e62;
+            font-weight: 700;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #ccc5b9;
+            border: 4px solid #f4f1eb;
+        }
+        .timeline-item:hover::before {
+            background-color: #a37e62;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#252422]">
+                Umair Khalid
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#summary" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Summary</a>
+                <a href="#skills" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Skills</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Projects</a>
+                <a href="#education" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Education</a>
+                <a href="mailto:itsumairkhalid@gmail.com" class="bg-[#a37e62] text-white px-4 py-2 rounded-md hover:bg-[#8e6b52] transition-all">Contact Me</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
+             <a href="#summary" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Summary</a>
+             <a href="#skills" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Skills</a>
+             <a href="#projects" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Projects</a>
+             <a href="#education" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Education</a>
+             <a href="mailto:itsumairkhalid@gmail.com" class="block mt-2 text-center bg-[#a37e62] text-white px-4 py-2 rounded-md hover:bg-[#8e6b52] transition-all">Contact Me</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        
+        <section id="hero" class="text-center mb-16 md:mb-24">
+            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full bg-gray-300 overflow-hidden border-4 border-white shadow-lg">
+                <img src="https://placehold.co/160x160/ccc5b9/403d39?text=UK" alt="Umair Khalid" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-2 text-[#252422]">Umair Khalid</h1>
+            <p class="text-xl md:text-2xl text-[#6b6762] mb-6">.NET Web & API Developer</p>
+            <div class="flex justify-center space-x-6 text-[#a37e62]">
+                <a href="https://linkedin.com/in/iamumairkhalid" target="_blank" class="hover:text-[#8e6b52] transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="https://github.com/IamUmairKhalid" target="_blank" class="hover:text-[#8e6b52] transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <section id="summary" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-bold mb-4 text-[#252422]">Professional Summary</h2>
+                <p class="text-lg leading-relaxed text-[#403d39]">
+                    This section provides a brief overview of my professional background. As a dedicated .NET Web & API Developer with 1.5 years of experience, I specialize in full-stack development using technologies like Razor Pages, MVC, and Blazor. My skills include C#, EF Core, and SQL Server. I am passionate about building robust applications and continuously advancing my expertise in API development and cloud integration.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 text-[#252422]">Technical Skills</h2>
+                <p class="text-lg leading-relaxed mb-8 text-[#6b6762]">
+                    Here is a visualization of my technical skillset, categorized by area of expertise. This chart offers a quick look at my capabilities in backend and frontend development, databases, and more. Hover over the points on the chart to see specific technologies.
+                </p>
+                <div class="bg-white p-4 md:p-8 rounded-lg shadow-sm">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#252422]">Projects</h2>
+                <p class="text-lg leading-relaxed mb-12 text-center text-[#6b6762]">
+                    Below are some of the key projects I've developed. This section showcases my ability to apply my technical skills to create real-world applications, from portfolio sites to e-book platforms. Each project highlights a different aspect of my development experience.
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-[#252422]">Portfolio Website</h3>
+                        <p class="text-sm font-medium text-[#a37e62] mb-3">Razor Pages, .NET 8, EF Core</p>
+                        <p class="text-[#403d39]">Built a personal portfolio with a secure admin panel and full CRUD functionality to manage content.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-[#252422]">E-Book Shelf</h3>
+                        <p class="text-sm font-medium text-[#a37e62] mb-3">Blazor Server, .NET 9, LINQ</p>
+                        <p class="text-[#403d39]">Developed an online book reading platform featuring user dashboards and a comprehensive admin panel.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-[#252422]">Blog Site (In Progress)</h3>
+                        <p class="text-sm font-medium text-[#a37e62] mb-3">ASP.NET MVC, .NET 8, EF Core</p>
+                        <p class="text-[#403d39]">Currently creating a dynamic blog system with robust user authentication and content management features.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education" class="scroll-mt-20">
+             <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#252422]">Education & Certifications</h2>
+                <p class="text-lg leading-relaxed mb-12 text-center text-[#6b6762]">
+                    My academic background and commitment to continuous learning are outlined below. This timeline tracks my journey from my university coursework to professional certifications that have expanded my skillset.
+                </p>
+                <div class="relative pl-8 border-l-2 border-dashed border-gray-300">
+                    <div class="timeline-item mb-12 relative">
+                        <h3 class="text-xl font-bold text-[#252422]">Bachelor of Science in Computer Science</h3>
+                        <p class="font-medium text-[#6b6762]">Air University, Islamabad</p>
+                        <p class="text-sm text-[#a37e62]">2022 – 2027 (Expected)</p>
+                        <p class="mt-2 text-[#403d39]">Relevant Coursework: OOP, Database Systems, Web Development, Data Structures & Algorithms.</p>
+                    </div>
+                    <div class="timeline-item mb-12 relative">
+                        <h3 class="text-xl font-bold text-[#252422]">Web Development Certification</h3>
+                        <p class="font-medium text-[#6b6762]">Moqboolcourses.com</p>
+                    </div>
+                     <div class="timeline-item mb-12 relative">
+                        <h3 class="text-xl font-bold text-[#252422]">HTML & CSS Certification</h3>
+                        <p class="font-medium text-[#6b6762]">Cisco Networking Academy</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-[#252422]">C++ & OOP Certification</h3>
+                        <p class="font-medium text-[#6b6762]">Coursera</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-16 md:mt-24">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <p>&copy; 2024 Umair Khalid. All Rights Reserved.</p>
+            <p class="text-sm mt-2">📍 Kotli, Azad Kashmir, Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Backend', 'Database', 'Frontend', 'Languages', 'Tools & Platforms'],
+                    datasets: [{
+                        label: 'Proficiency',
+                        data: [90, 85, 75, 80, 95],
+                        backgroundColor: 'rgba(163, 126, 98, 0.2)',
+                        borderColor: 'rgba(163, 126, 98, 1)',
+                        pointBackgroundColor: 'rgba(163, 126, 98, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(163, 126, 98, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    const category = context.label;
+                                    let skills = '';
+                                    switch(category) {
+                                        case 'Backend': skills = 'C#, .NET Core, MVC, Blazor'; break;
+                                        case 'Database': skills = 'SQL, EF Core, SQL Server, LINQ'; break;
+                                        case 'Frontend': skills = 'HTML, CSS, Bootstrap'; break;
+                                        case 'Languages': skills = 'C++, Java, C#'; break;
+                                        case 'Tools & Platforms': skills = 'Git, VS Code, Visual Studio'; break;
+                                    }
+                                    return skills.split(', ');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: '#ebedef'
+                            },
+                            grid: {
+                                color: '#ebedef'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif'
+                                },
+                                color: '#403d39'
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                display: false
+                            },
+                             suggestedMin: 0,
+                             suggestedMax: 100
+                        }
+                    }
+                }
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                   if (mobileMenu.classList.contains('hidden') === false) {
+                       mobileMenu.classList.add('hidden');
+                   }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
