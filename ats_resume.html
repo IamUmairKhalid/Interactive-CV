@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umair Khalid - Resume (ATS Optimized)</title>
+    <style>
+        /* ATS Resume Stylesheet - Single Column, High Parsing Score */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111111;
+            background-color: #ffffff;
+            line-height: 1.45;
+            margin: 0;
+            padding: 2.5rem;
+            font-size: 10.5pt;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #222222;
+            padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .header h1 {
+            font-size: 22pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 0.3rem 0;
+        }
+
+        .header .subtitle {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .contact-info {
+            font-size: 9.5pt;
+            color: #444444;
+        }
+
+        .header .contact-info a {
+            color: #111111;
+            text-decoration: none;
+        }
+
+        /* Section Dividers */
+        .section {
+            margin-bottom: 1.2rem;
+        }
+
+        .section-title {
+            font-size: 11.5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.6rem;
+            color: #111111;
+            letter-spacing: 0.5px;
+        }
+
+        /* Summary */
+        .summary-text {
+            text-align: justify;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Table / List */
+        .skills-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        .skills-list strong {
+            font-weight: bold;
+        }
+
+        /* Item Header (Projects / Experience / Education) */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #111111;
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: #333333;
+        }
+
+        .item-date {
+            font-size: 9.5pt;
+            font-weight: bold;
+            color: #444444;
+            white-space: nowrap;
+        }
+
+        .item-tech {
+            font-size: 9.5pt;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Bullet Points */
+        ul.bullet-list {
+            margin: 0.25rem 0 0.6rem 1.2rem;
+            padding: 0;
+        }
+
+        ul.bullet-list li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Certifications List */
+        .cert-list {
+            margin: 0.25rem 0 0.5rem 1.2rem;
+            padding: 0;
+        }
+
+        .cert-list li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Print Controls */
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #111827;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                font-size: 10pt;
+            }
+            .print-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+    <div class="resume-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <h1>Umair Khalid</h1>
+            <div class="subtitle">.NET Web & API Developer | Full-Stack Software Engineer</div>
+            <div class="contact-info">
+                F-8/1, Islamabad, Pakistan | Phone: +92 319 3708558 | Email: itsumairkhalid@gmail.com<br>
+                LinkedIn: linkedin.com/in/iamumairkhalid | GitHub: github.com/IamUmairKhalid
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="section">
+            <div class="section-title">Professional Summary</div>
+            <p class="summary-text">
+                Accomplished <strong>.NET Web & API Developer</strong> with practical experience engineering full-stack web applications, RESTful microservices, and interactive portals using <strong>C#, ASP.NET Core MVC, Razor Pages, Blazor (.NET 9), Next.js, and SQL Server</strong>. Highly skilled in Entity Framework Core schema design, LINQ performance optimization, role-based security architectures, and automated matching algorithms. Recognized for strong analytical problem-solving, architectural clean-code practices, and collaborative cross-functional teamwork.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="section">
+            <div class="section-title">Technical Skills</div>
+            <ul class="skills-list">
+                <li><strong>Programming Languages:</strong> C#, C++, Java, JavaScript (ES6+), HTML5, CSS3, SQL</li>
+                <li><strong>Frameworks & Tech Stack:</strong> ASP.NET Core MVC, Blazor (Server / .NET 9), Razor Pages, Next.js, .NET 8 / .NET 9, .NET MAUI, RESTful APIs</li>
+                <li><strong>Databases & ORM:</strong> SQL Server (SSMS), Entity Framework Core (EF Core), LINQ Queries, PostgreSQL, SQLite, MongoDB, Firebase</li>
+                <li><strong>Development Tools & Environments:</strong> Visual Studio 2022, VS Code, Git, GitHub, Postman, Android Studio</li>
+                <li><strong>UI & Design Systems:</strong> Bootstrap, Tailwind CSS, Blazor Bootstrap, Responsive Web Architecture</li>
+                <li><strong>Architecture & Engineering:</strong> Clean Architecture, ViewModels, Repository Pattern, RBAC Security, Data Structures & Algorithms</li>
+            </ul>
+        </section>
+
+        <!-- Technical Experience -->
+        <section class="section">
+            <div class="section-title">Development Experience</div>
+            
+            <div class="item-header">
+                <span class="item-title">Full-Stack .NET Web & API Developer</span>
+                <span class="item-date">2023 – Present</span>
+            </div>
+            <div class="item-subtitle">Independent & Enterprise Development Projects | Islamabad, Pakistan</div>
+            <ul class="bullet-list">
+                <li>Engineered scalable web applications and microservices using ASP.NET Core MVC, Razor Pages, Blazor Server (.NET 9), and Next.js.</li>
+                <li>Designed normalized SQL Server databases, managed Entity Framework Core migrations, and optimized LINQ projection queries for zero-latency retrieval.</li>
+                <li>Developed administrative portals equipped with role-based authentication, user account management, and multi-tenant CRUD capabilities.</li>
+                <li>Exposed RESTful APIs for cross-platform client integration, transactional notification dispatch, and automated search indexing.</li>
+            </ul>
+        </section>
+
+        <!-- High-Value Projects (Arranged with Latest Projects First) -->
+        <section class="section">
+            <div class="section-title">High-Value Projects</div>
+
+            <!-- Project 1 (Latest) -->
+            <div class="item-header">
+                <span class="item-title">FoundPakistan – AI-Assisted Lost & Found Portal</span>
+                <span class="item-date">Next.js / Node.js API</span>
+            </div>
+            <div class="item-tech">Technologies: Next.js, Node.js API, PostgreSQL / MongoDB, Matching Algorithm, Privacy Shield</div>
+            <ul class="bullet-list">
+                <li>Architected a privacy-first web platform connecting lost item claims with found reports via an automated matching score engine (0–100%).</li>
+                <li>Engineered an end-to-end Contact Request System hiding personal details until explicit dual-party approval.</li>
+                <li>Implemented administrative match verification queues and automated email notification pipelines.</li>
+            </ul>
+
+            <!-- Project 2 (Latest) -->
+            <div class="item-header">
+                <span class="item-title">Blazor E-Book Shelf Web Platform</span>
+                <span class="item-date">.NET 9 / Blazor Server</span>
+            </div>
+            <div class="item-tech">Technologies: Blazor Server, .NET 9, EF Core, SQL Server, LINQ, Bootstrap</div>
+            <ul class="bullet-list">
+                <li>Developed a digital reading platform and subscription management back-office using Blazor Server (.NET 9).</li>
+                <li>Engineered an Admin Portal governing book catalogs, subscription tier enforcement, user role assignments, and site content.</li>
+                <li>Optimized EF Core LINQ queries and custom component state handlers for high-concurrency database operations.</li>
+            </ul>
+
+            <!-- Project 3 -->
+            <div class="item-header">
+                <span class="item-title">Portfolio Website & Razor Pages CMS</span>
+                <span class="item-date">.NET 8 / Razor Pages</span>
+            </div>
+            <div class="item-tech">Technologies: ASP.NET Core Razor Pages, .NET 8, EF Core, SQL Server</div>
+            <ul class="bullet-list">
+                <li>Created a full-stack portfolio platform featuring a secure, password-protected administrative control panel.</li>
+                <li>Implemented real-time content CRUD workflows, EF Core database mappings, and anti-forgery security protocols.</li>
+            </ul>
+
+            <!-- Project 4 -->
+            <div class="item-header">
+                <span class="item-title">ASP.NET Core MVC Blog Site & REST API</span>
+                <span class="item-date">.NET 8 / MVC</span>
+            </div>
+            <div class="item-tech">Technologies: ASP.NET Core MVC, .NET 8, EF Core, SQL Server, RESTful APIs</div>
+            <ul class="bullet-list">
+                <li>Built a publishing framework leveraging Clean Architecture, repository patterns, and decoupled ViewModels.</li>
+                <li>Exposed RESTful API endpoints for article listing, category filtering, and authentication.</li>
+            </ul>
+
+            <!-- Project 5 (In Progress) -->
+            <div class="item-header">
+                <span class="item-title">NHA E-Tolling System (In Progress)</span>
+                <span class="item-date">C# / .NET Core</span>
+            </div>
+            <div class="item-tech">Technologies: C#, .NET Core, SQL Server, High-Throughput Audit Engine</div>
+            <ul class="bullet-list">
+                <li>Currently developing automated electronic toll collection backend logic for highway vehicle transit logging and fee calculations.</li>
+                <li>Designing robust transactional database schemas for daily collection reconciliation and automated revenue reporting.</li>
+            </ul>
+
+            <!-- Project 6 -->
+            <div class="item-header">
+                <span class="item-title">NotesPro MAUI Application</span>
+                <span class="item-date">.NET 10 MAUI</span>
+            </div>
+            <div class="item-tech">Technologies: .NET 10 MAUI, C#, SQLite Local Database, MVVM Pattern</div>
+            <ul class="bullet-list">
+                <li>Built cross-platform desktop/mobile note-taking application using .NET MAUI and local SQLite database.</li>
+            </ul>
+
+            <!-- Project 7 -->
+            <div class="item-header">
+                <span class="item-title">IS Vulnerability Scanner & Queue Game Engine</span>
+                <span class="item-date">C++ Security & Algorithms</span>
+            </div>
+            <div class="item-tech">Technologies: C++, Network Sockets, Raylib 2D Engine, Queues</div>
+            <ul class="bullet-list">
+                <li>Developed a network vulnerability scanner in C++ inspecting active ports and evaluating server security banners.</li>
+                <li>Built a 2D interactive game in C++ using Raylib and custom FIFO queue data structures.</li>
+            </ul>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <div class="section-title">Education</div>
+            <div class="item-header">
+                <span class="item-title">Bachelor of Science in Computer Science (BSCS)</span>
+                <span class="item-date">2022 – Present</span>
+            </div>
+            <div class="item-subtitle">Air University, Islamabad, Pakistan</div>
+            <ul class="bullet-list">
+                <li><strong>Status:</strong> Completed 6 Semesters</li>
+                <li><strong>Relevant Coursework:</strong> Object-Oriented Programming (OOP), Database Systems (DBMS), Web Development, Data Structures & Algorithms (DSA), Information Security.</li>
+            </ul>
+        </section>
+
+        <!-- Certifications & Awards -->
+        <section class="section">
+            <div class="section-title">Certifications & Competitions</div>
+            <ul class="cert-list">
+                <li><strong>C# (.NET) Web Development Certificate</strong> – Moqboolcourses.com</li>
+                <li><strong>Partner-CPA Programming Essentials in C++ Certificate</strong> – Cisco Networking Academy</li>
+                <li><strong>C# (.NET) Development & Backend Masterclass Certificate</strong> – Udemy</li>
+                <li><strong>HTML and CSS Web Development Credential</strong> – Coursera / ICT</li>
+                <li><strong>Brain Jam 2022 Hackathon Certificate</strong> – Riphah International University</li>
+                <li><strong>IDEA Pitch Competition 2023 Certificate</strong> – Riphah International University</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>

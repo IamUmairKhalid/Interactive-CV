@@ -1,326 +1,457 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umair Khalid - .NET Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Umair Khalid - .NET Web & API Developer | Modern CV</title>
+    <meta name="description" content="Professional portfolio and interactive CV of Umair Khalid, .NET Web & API Developer specializing in ASP.NET Core MVC, Blazor Server, Razor Pages, EF Core, Next.js, and SQL Server.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutral Harmony -->
-    <!-- Application Structure Plan: The application is structured as a single-page, vertical-scrolling narrative portfolio. It begins with a hero section for immediate impact, followed by thematic sections: Summary, Skills, Projects, and Education/Certifications. A sticky navigation bar allows for quick access to any section. This structure was chosen to guide a user (like a recruiter) through a logical story of professional capabilities, moving from a high-level summary to detailed skills and evidence (projects), and finally to formal qualifications. This is more engaging and intuitive than a traditional, static CV format. -->
-    <!-- Visualization & Content Choices: 
-        - Professional Summary -> Inform -> Styled Text Block -> N/A -> Clear, immediate introduction to the candidate's profile -> HTML/Tailwind.
-        - Skills List -> Compare/Organize -> Interactive Radar Chart -> Hover for Tooltips -> Provides a quick, holistic visual of skill strengths across different domains (backend, frontend, etc.), which is more impactful than a simple list -> Chart.js/Canvas.
-        - Projects List -> Organize/Showcase -> Responsive Card Grid -> Hover Effects -> Cards cleanly separate project details, making the portfolio easy to scan. The grid adapts to different screen sizes for optimal viewing -> HTML/Tailwind.
-        - Education & Certifications -> Show Chronological Change -> Vertical Timeline -> N/A -> A timeline visually represents career progression and educational journey in an easy-to-follow format -> HTML/Tailwind.
-        -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f1eb;
-            color: #403d39;
-        }
-        .nav-link.active {
-            color: #a37e62;
-            font-weight: 700;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -31px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background-color: #ccc5b9;
-            border: 4px solid #f4f1eb;
-        }
-        .timeline-item:hover::before {
-            background-color: #a37e62;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased">
+<body>
 
-    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-[#252422]">
-                Umair Khalid
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Umair Khalid</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience & Education</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="ats_resume.html" target="_blank" class="nav-link" style="color:var(--accent-color); font-weight:700;">📄 ATS Resume</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Light/Dark Theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="btn-primary" id="printCvBtn">
+                    <span>🖨️ Export PDF</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">☰</button>
             </div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#summary" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Summary</a>
-                <a href="#skills" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Skills</a>
-                <a href="#projects" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Projects</a>
-                <a href="#education" class="nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Education</a>
-                <a href="mailto:itsumairkhalid@gmail.com" class="bg-[#a37e62] text-white px-4 py-2 rounded-md hover:bg-[#8e6b52] transition-all">Contact Me</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
-             <a href="#summary" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Summary</a>
-             <a href="#skills" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Skills</a>
-             <a href="#projects" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Projects</a>
-             <a href="#education" class="block py-2 nav-link text-gray-600 hover:text-[#a37e62] transition-colors">Education</a>
-             <a href="mailto:itsumairkhalid@gmail.com" class="block mt-2 text-center bg-[#a37e62] text-white px-4 py-2 rounded-md hover:bg-[#8e6b52] transition-all">Contact Me</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8 md:py-16">
-        
-        <section id="hero" class="text-center mb-16 md:mb-24">
-            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full bg-gray-300 overflow-hidden border-4 border-white shadow-lg">
-                <img src="ProfilePicCroped.png" alt="Umair Khalid" class="w-full h-full object-cover">
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-2 text-[#252422]">Umair Khalid</h1>
-            <p class="text-xl md:text-2xl text-[#6b6762] mb-6">.NET Web & API Developer</p>
-            <div class="flex justify-center space-x-6 text-[#a37e62]">
-                <a href="https://linkedin.com/in/iamumairkhalid" target="_blank" class="hover:text-[#8e6b52] transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="https://github.com/IamUmairKhalid" target="_blank" class="hover:text-[#8e6b52] transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-            </div>
-        </section>
+    <main class="container">
 
-        <section id="summary" class="mb-16 md:mb-24 scroll-mt-20">
-            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm">
-                <h2 class="text-3xl font-bold mb-4 text-[#252422]">
-                    Profile Summary
-                </h2>
-                <p class="text-lg leading-relaxed text-[#403d39]">
-                    Motivated and detail-oriented <b>.NET Developer</b> with over <b>1.5 years of practical experience</b> in building web applications using Razor Pages, MVC, and Blazor. Proficient in C#, EF Core, LINQ, and SQL Server, with a strong foundation in both frontend and backend development. Experienced in designing admin panels, user management systems, and database-driven applications. Currently enhancing skills in API development to deliver scalable and modern web solutions.
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="status-dot"></span> Available for .NET & Full-Stack Opportunities
+                </div>
+                <h1 class="hero-title">Umair Khalid</h1>
+                <h2 class="hero-subtitle">.NET Web & API Developer</h2>
+                <p class="hero-description">
+                    Dedicated Software Engineer with hands-on experience engineering enterprise full-stack web applications, RESTful microservices, and interactive portals using 
+                    <strong>C#, ASP.NET Core MVC, Razor Pages, Blazor (.NET 9), Next.js, and SQL Server</strong>. Adept at architectural pattern design, Entity Framework Core query optimization, and privacy-first database systems.
                 </p>
+                <div class="hero-actions">
+                    <a href="mailto:itsumairkhalid@gmail.com" class="btn-primary">✉️ Get In Touch</a>
+                    <a href="https://linkedin.com/in/iamumairkhalid" target="_blank" class="btn-outline">LinkedIn Profile</a>
+                    <a href="https://github.com/IamUmairKhalid" target="_blank" class="btn-outline">GitHub Projects</a>
+                </div>
+                <div class="contact-info-pills">
+                    <div class="info-pill">📍 F-8/1, Islamabad, Pakistan</div>
+                    <div class="info-pill">📞 <a href="tel:+923193708558">+92 319 3708558</a></div>
+                    <div class="info-pill">✉️ <a href="mailto:itsumairkhalid@gmail.com">itsumairkhalid@gmail.com</a></div>
+                </div>
             </div>
-        </section>
-
-        <section id="skills" class="mb-16 md:mb-24 scroll-mt-20">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4 text-[#252422]">
-                    Technical Skills
-                </h2>
-                <p class="text-lg leading-relaxed mb-8 text-[#6b6762]">
-                    Here is a visualization of my technical skillset, categorized by area of expertise. This chart offers a quick look at my capabilities in backend and frontend development, databases, and more. Hover over the points on the chart to see specific technologies.
-                </p>
-                <div class="bg-white p-4 md:p-8 rounded-lg shadow-sm">
-                    <div class="chart-container">
-                        <canvas id="skillsChart"></canvas>
-                    </div>
+            <div class="hero-avatar-container">
+                <div class="hero-avatar-wrapper">
+                    <img src="profile.png" alt="Umair Khalid" class="hero-avatar-img">
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="mb-16 md:mb-24 scroll-mt-20">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-4 text-[#252422]">
-                    Projects
-                </h2>
-                <p class="text-lg leading-relaxed mb-12 text-center text-[#6b6762]">
-                    Below are some of the key projects I've developed. This section showcases my ability to apply my technical skills to create real-world applications, from portfolio sites to e-book platforms. Each project highlights a different aspect of my development experience.
-                </p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-[#252422]">Portfolio Website</h3>
-                        <p class="text-sm font-medium text-[#a37e62] mb-3">Razor Pages, .NET 8, EF Core, SQL Server</p>
-                        <ul class="text-sm list-disc list-inside text-[#403d39] space-y-1">
-                            <li>Built a personal portfolio site with sections for profile, education, skills, and contact details.</li>
-                            <li>Designed and implemented a secure admin panel with login and content management features.</li>
-                            <li>Integrated database operations with EF Core for dynamic data handling.</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-[#252422]">E-Book Shelf Web App</h3>
-                        <p class="text-sm font-medium text-[#a37e62] mb-3">Blazor Server, .NET 9, EF Core, LINQ, SQL Server</p>
-                        <ul class="text-sm list-disc list-inside text-[#403d39] space-y-1">
-                            <li>Developed an online platform for reading and managing e-books with user accounts, reading history, and rating features.</li>
-                            <li>Created an admin dashboard to manage subscriptions, books, roles, and homepage content.</li>
-                            <li>Designed a responsive UI with custom components and implemented role-based access control.</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-sm p-6 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-[#252422]">Blog Site (In Progress)</h3>
-                        <p class="text-sm font-medium text-[#a37e62] mb-3">ASP.NET MVC, .NET 8, EF Core, SQL Server</p>
-                        <ul class="text-sm list-disc list-inside text-[#403d39] space-y-1">
-                            <li>Currently developing a blogging platform to apply MVC concepts.</li>
-                            <li>Implementing features such as authentication, CRUD posts, and category management.</li>
-                        </ul>
+        <!-- Technical Skills Matrix -->
+        <section class="section" id="skills">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Categorized breakdown of technologies, frameworks, and engineering competencies.</p>
+            </div>
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <div class="skill-card-icon">⚡</div>
+                    <h3 class="skill-card-title">Backend & Core Engineering</h3>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag highlight">C# (.NET 8 / .NET 9)</span>
+                        <span class="skill-tag highlight">ASP.NET Core MVC</span>
+                        <span class="skill-tag highlight">Blazor Server</span>
+                        <span class="skill-tag highlight">Razor Pages</span>
+                        <span class="skill-tag highlight">RESTful Web APIs</span>
+                        <span class="skill-tag">LINQ Queries</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
                     </div>
                 </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon">🗄️</div>
+                    <h3 class="skill-card-title">Databases & Data Architecture</h3>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag highlight">SQL Server (SSMS)</span>
+                        <span class="skill-tag highlight">Entity Framework Core</span>
+                        <span class="skill-tag">Relational Database Design</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon">💻</div>
+                    <h3 class="skill-card-title">Frontend & Mobile Platforms</h3>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag highlight">Next.js / React</span>
+                        <span class="skill-tag highlight">.NET MAUI</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">HTML5 & CSS3</span>
+                        <span class="skill-tag">Bootstrap / Tailwind</span>
+                        <span class="skill-tag">Blazor Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon">🛠️</div>
+                    <h3 class="skill-card-title">Architecture & Tooling</h3>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag highlight">Visual Studio 2022</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Clean Architecture & ViewModels</span>
+                        <span class="skill-tag">OOP & Data Structures</span>
+                    </div>
+                </div>
+
             </div>
         </section>
-        
-        <section id="education" class="scroll-mt-20">
-             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-4 text-[#252422]">
-                    Education & Certifications
-                </h2>
-                <p class="text-lg leading-relaxed mb-12 text-center text-[#6b6762]">
-                    My academic background and commitment to continuous learning are outlined below. This timeline tracks my journey from my university coursework to professional certifications that have expanded my skillset.
-                </p>
-                <div class="relative pl-8 border-l-2 border-dashed border-gray-300">
-                    <div class="timeline-item mb-12 relative">
-                        <h3 class="text-xl font-bold text-[#252422]">Bachelor of Science in Computer Science</h3>
-                        <p class="font-medium text-[#6b6762]">Air University, Islamabad</p>
-                        <p class="text-sm text-[#a37e62]">2022 – 2027 (Expected)</p>
-                        <p class="mt-2 text-[#403d39]">Successfully completed 4 semesters with a CGPA of 2.78. Relevant coursework: Object-Oriented Programming, Database Systems, Web Development, Data Structures & Algorithms.</p>
-                        <p class="mt-1 text-[#403d39]">Developed multiple academic projects in C++, Flutter, and .NET full-stack applications.</p>
+
+        <!-- Projects Showcase (Arranged with Latest Projects First) -->
+        <section class="section" id="projects">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Projects Showcase</h2>
+                <p class="section-subtitle">Latest software development projects, enterprise web systems, and mobile applications.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="dotnet">.NET & Blazor</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack & Next.js</button>
+                <button class="filter-btn" data-filter="other">Mobile & Security</button>
+            </div>
+
+            <div class="projects-grid">
+                
+                <!-- 1. Latest Project: FoundPakistan -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-header">
+                        <span class="project-badge">Latest Full-Stack App</span>
+                        <h3 class="project-title">FoundPakistan – Lost & Found Portal</h3>
+                        <p class="project-tech-stack">Next.js, Node.js API, Matching Algorithm, Privacy Shield</p>
                     </div>
-                    <div class="timeline-item mb-12 relative">
-                        <h3 class="text-xl font-bold text-[#252422]">C++ & OOP – Coursera</h3>
-                        <p class="font-medium text-[#6b6762]">Certification</p>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Architected a privacy-first web platform connecting lost item claims with found reports using an automated matching score engine (0–100%).</li>
+                            <li>Engineered an end-to-end Contact Request System hiding personal details until explicit dual-party approval.</li>
+                            <li>Integrated Admin Verification Dashboards and automated transactional email dispatch pipelines.</li>
+                        </ul>
                     </div>
-                     <div class="timeline-item mb-12 relative">
-                        <h3 class="text-xl font-bold text-[#252422]">HTML & CSS – Cisco Networking Academy</h3>
-                        <p class="font-medium text-[#6b6762]">Certification</p>
-                    </div>
-                    <div class="timeline-item relative">
-                        <h3 class="text-xl font-bold text-[#252422]">Web Development Certificate – Moqboolcourses.com</h3>
-                        <p class="font-medium text-[#6b6762]">Certification</p>
+                    <div class="project-footer">
+                        <span class="project-meta-item">Next.js & API Engine</span>
+                        <button class="btn-details" data-project-id="found-pakistan">View Details ➔</button>
                     </div>
                 </div>
+
+                <!-- 2. Latest Project: Blazor E-Book Shelf -->
+                <div class="project-card" data-category="dotnet fullstack">
+                    <div class="project-header">
+                        <span class="project-badge">Featured Production App</span>
+                        <h3 class="project-title">Blazor E-Book Shelf Platform</h3>
+                        <p class="project-tech-stack">Blazor Server, .NET 9, EF Core, SQL Server, LINQ</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Engineered a digital reading platform and subscription management portal built on Blazor Server (.NET 9).</li>
+                            <li>Designed comprehensive Admin Dashboards governing book cataloging, user subscription tiers, and Role-Based Access Control (RBAC).</li>
+                            <li>Optimized Entity Framework Core LINQ queries for high concurrency database operations.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">Blazor & .NET 9</span>
+                        <button class="btn-details" data-project-id="blazor-ebook">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 3. Project: Portfolio Website & CMS -->
+                <div class="project-card" data-category="dotnet fullstack">
+                    <div class="project-header">
+                        <span class="project-badge">CMS Platform</span>
+                        <h3 class="project-title">Portfolio & Admin Back-Office</h3>
+                        <p class="project-tech-stack">ASP.NET Core Razor Pages, .NET 8, EF Core, SQL Server</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Built a dynamic web application with a secure administrative back-office for real-time portfolio management.</li>
+                            <li>Implemented full CRUD workflows, SQL Server relational schemas, anti-forgery validation, and contact response processing.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">Razor Pages CMS</span>
+                        <button class="btn-details" data-project-id="razor-portfolio">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 4. Project: Blog Site & REST API -->
+                <div class="project-card" data-category="dotnet fullstack">
+                    <div class="project-header">
+                        <span class="project-badge">Clean Architecture</span>
+                        <h3 class="project-title">ASP.NET Core MVC Blog & REST API</h3>
+                        <p class="project-tech-stack">ASP.NET Core MVC, .NET 8, EF Core, REST API, ViewModels</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Developed a modular publishing platform strictly adhering to Clean Architecture and decoupled ViewModel design.</li>
+                            <li>Exposed RESTful web API endpoints for cross-platform article consumption and indexing.</li>
+                            <li>Implemented secure authentication, session persistence, and multi-level article comments.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">MVC & REST APIs</span>
+                        <button class="btn-details" data-project-id="mvc-blog">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 5. Project: NHA E-Tolling System (In Progress) -->
+                <div class="project-card" data-category="dotnet">
+                    <div class="project-header">
+                        <span class="project-badge" style="background:#fef3c7; color:#b45309;">In Progress</span>
+                        <h3 class="project-title">NHA E-Tolling System (In Progress)</h3>
+                        <p class="project-tech-stack">C#, .NET Core, SQL Server, High-Throughput Audit Engine</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Currently developing automated electronic toll collection backend logic for highway vehicle transit logging and category processing.</li>
+                            <li>Designing robust transactional database schemas for daily collection reconciliation and automated revenue reporting.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">Enterprise System (In Progress)</span>
+                        <button class="btn-details" data-project-id="nha-tolling">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 6. Project: NotesPro Cross-Platform MAUI App -->
+                <div class="project-card" data-category="other">
+                    <div class="project-header">
+                        <span class="project-badge">Cross-Platform Mobile</span>
+                        <h3 class="project-title">NotesPro .NET 10 MAUI App</h3>
+                        <p class="project-tech-stack">.NET 10 MAUI, C#, SQLite Local Storage, MVVM Pattern</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Architected cross-platform note-taking software targeting Windows Desktop and Android from a single C# codebase.</li>
+                            <li>Utilized local SQLite data persistence, instant search indexing, and modern MVVM data binding patterns.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">MAUI Application</span>
+                        <button class="btn-details" data-project-id="notes-pro">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 7. Project: Vulnerability Scanner -->
+                <div class="project-card" data-category="other">
+                    <div class="project-header">
+                        <span class="project-badge">Cybersecurity Utility</span>
+                        <h3 class="project-title">IS Vulnerability Audit Scanner</h3>
+                        <p class="project-tech-stack">C++, Sockets, Security Audit Protocols</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Collaborative cybersecurity diagnostic tool built to perform TCP/UDP port audits and flag server vulnerabilities.</li>
+                            <li>Implemented multi-threaded socket probes to inspect open service banners and evaluate protocol security.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">Security System</span>
+                        <button class="btn-details" data-project-id="vuln-scanner">View Details ➔</button>
+                    </div>
+                </div>
+
+                <!-- 8. Project: C++ Raylib Snake Engine -->
+                <div class="project-card" data-category="other">
+                    <div class="project-header">
+                        <span class="project-badge">Algorithms & Data Structures</span>
+                        <h3 class="project-title">Queue-Based Game Engine</h3>
+                        <p class="project-tech-stack">C++, Raylib Graphics Library, Custom FIFO Queues</p>
+                    </div>
+                    <div class="project-body">
+                        <ul class="project-bullets">
+                            <li>Developed a 2D interactive game engine in C++ demonstrating real-time spatial calculations using custom FIFO Queue structures.</li>
+                            <li>Implemented low-latency frame-rate management and collision detection algorithms via Raylib.</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-meta-item">C++ Core Project</span>
+                        <button class="btn-details" data-project-id="cxx-raylib">View Details ➔</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience & Education Timeline -->
+        <section class="section" id="experience">
+            <div class="section-header">
+                <span class="section-tag">Career History</span>
+                <h2 class="section-title">Experience & Education</h2>
+                <p class="section-subtitle">Academic journey and hands-on software development timeline.</p>
+            </div>
+
+            <div class="timeline-container">
+                
+                <!-- Timeline Item 1: Hands-on Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-role">Full-Stack .NET Web & API Developer</h3>
+                        <div class="timeline-org">Independent Projects & Enterprise Development | Islamabad, Pakistan</div>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Engineered high-performance web applications utilizing ASP.NET Core MVC, Razor Pages, Blazor Server, and Next.js.</li>
+                                <li>Designed normalized SQL Server databases, executed EF Core migrations, and optimized LINQ queries for complex datasets.</li>
+                                <li>Built RESTful APIs and secure admin dashboards with authentication, authorization, and data privacy controls.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: BSCS Education (Updated: 6 Semesters Completed, No GPA) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 – Present</div>
+                        <h3 class="timeline-role">Bachelor of Science in Computer Science (BSCS)</h3>
+                        <div class="timeline-org">Air University, Islamabad</div>
+                        <div class="timeline-desc">
+                            <p><strong>Status:</strong> Completed 6 Semesters</p>
+                            <p style="margin-top:0.4rem;"><strong>Key Coursework:</strong> Object-Oriented Programming (OOP), Database Systems (DBMS), Web Development, Data Structures & Algorithms (DSA), Information Security.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Certifications & Awards Section -->
+        <section class="section" id="certifications">
+            <div class="section-header">
+                <span class="section-tag">Credentials</span>
+                <h2 class="section-title">Certifications & Competitions</h2>
+                <p class="section-subtitle">Official industry certificates and hackathon recognition.</p>
+            </div>
+
+            <div class="cert-grid">
+                
+                <div class="cert-card">
+                    <div class="cert-icon">📜</div>
+                    <div class="cert-info">
+                        <h4>C# (.NET) Web Development Certificate</h4>
+                        <p>Moqboolcourses.com / Professional Certification</p>
+                        <span class="cert-badge">Verified Certification</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">💻</div>
+                    <div class="cert-info">
+                        <h4>Programming Essentials in C++</h4>
+                        <p>Cisco Networking Academy & CPA Partner</p>
+                        <span class="cert-badge">Verified Certification</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <h4>C# (.NET) Development Masterclass</h4>
+                        <p>Udemy Professional Certificate</p>
+                        <span class="cert-badge">Verified Certification</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🌐</div>
+                    <div class="cert-info">
+                        <h4>ICT HTML5 & CSS3 Web Development</h4>
+                        <p>Coursera Professional Credential</p>
+                        <span class="cert-badge">Verified Certification</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-info">
+                        <h4>Brain Jam 2022 Hackathon</h4>
+                        <p>Riphah International University</p>
+                        <span class="cert-badge">Competitor Certificate</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">💡</div>
+                    <div class="cert-info">
+                        <h4>IDEA Pitch Competition 2023</h4>
+                        <p>Riphah International University</p>
+                        <span class="cert-badge">Innovation Certificate</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-white mt-16 md:mt-24">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
-            <p>
-                &copy; 2025 Umair Khalid. All Rights Reserved.
-            </p>
-            <p class="text-sm mt-2">
-                📍 Kotli, Azad Kashmir, Pakistan
-            </p>
+    <!-- Modal Popup Container -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">✕</button>
+            <h3 class="modal-title" id="modalTitle">Project Title</h3>
+            <div class="modal-tech" id="modalTech">Tech Stack</div>
+            <div class="modal-body-content" id="modalBody">
+                <!-- Content injected dynamically via script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="https://linkedin.com/in/iamumairkhalid" target="_blank" class="footer-social-link" title="LinkedIn">in</a>
+                <a href="https://github.com/IamUmairKhalid" target="_blank" class="footer-social-link" title="GitHub">git</a>
+                <a href="mailto:itsumairkhalid@gmail.com" class="footer-social-link" title="Email">✉</a>
+            </div>
+            <p>&copy; 2026 Umair Khalid. Built with Vanilla Web Standards & Clean Design Aesthetics.</p>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('skillsChart').getContext('2d');
-            const skillsChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Programming & Frameworks', 'Databases & Tools', 'Web Technologies', 'Soft Skills'],
-                    datasets: [{
-                        label: 'Proficiency',
-                        data: [90, 90, 90, 90],
-                        backgroundColor: 'rgba(163, 126, 98, 0.2)',
-                        borderColor: 'rgba(163, 126, 98, 1)',
-                        pointBackgroundColor: 'rgba(163, 126, 98, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(163, 126, 98, 1)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                             callbacks: {
-                                label: function(context) {
-                                    const category = context.label;
-                                    let skills = '';
-                                    switch(category) {
-                                        case 'Programming & Frameworks': skills = 'C#, C++, Java, .NET Core, ASP.NET MVC, Blazor, Razor Pages, LINQ'; break;
-                                        case 'Databases & Tools': skills = 'SQL Server, EF Core, GitHub, Visual Studio, VS Code, Android Studio'; break;
-                                        case 'Web Technologies': skills = 'HTML, CSS, Bootstrap, Blazor Bootstrap'; break;
-                                        case 'Soft Skills': skills = 'Problem-Solving, Team Collaboration, Communication, Self-Learning'; break;
-                                    }
-                                    return skills.split(', ');
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: '#ebedef'
-                            },
-                            grid: {
-                                color: '#ebedef'
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 14,
-                                    family: 'Inter, sans-serif'
-                                },
-                                color: '#403d39'
-                            },
-                            ticks: {
-                                backdropColor: 'transparent',
-                                display: false
-                            },
-                             suggestedMin: 0,
-                             suggestedMax: 100
-                        }
-                    }
-                }
-            });
-
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.4
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                   if (mobileMenu.classList.contains('hidden') === false) {
-                       mobileMenu.classList.add('hidden');
-                   }
-                });
-            });
-
-        });
-    </script>
+    <!-- JavaScript Logic -->
+    <script src="script.js"></script>
 </body>
 </html>
