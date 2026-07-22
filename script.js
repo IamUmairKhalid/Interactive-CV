@@ -84,84 +84,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTech = document.getElementById('modalTech');
     const modalBody = document.getElementById('modalBody');
 
-    // Detailed Modal Information Dictionary with Professional Engineering Phrasing
+    // Detailed Modal Information Dictionary with Natural, Concrete Engineering Phrasing
     const projectDetailsData = {
         'found-pakistan': {
-            title: "FoundPakistan – AI-Assisted Lost & Found Portal",
-            tech: "Next.js, Node.js / Express REST APIs, PostgreSQL / MongoDB, Automated Matching Engine",
-            description: "An enterprise-grade, privacy-first web application designed to connect lost item reports with retrieved item filings across Pakistan using automated score matching algorithms.",
+            title: "FoundPakistan — Lost & Found Web Platform",
+            tech: "Next.js · Node.js · PostgreSQL · MongoDB · REST APIs",
+            description: "A lost-and-found web application built to connect missing item filings with retrieved item reports across Pakistan.",
             features: [
-                "<b>Automated Case Matching Engine:</b> Computes match probability scores (0–100%) between missing case entries and found case filings using item telemetry and location parameters.",
-                "<b>Privacy Shield & Contact Request System:</b> Protects user identity by masking contact info publicly; implements a multi-step Contact Request workflow requiring explicit approval before sharing phone/email details.",
-                "<b>Administrative Verification Queue:</b> Provides system administrators with a dedicated verification dashboard to confirm or dismiss auto-generated potential case matches.",
-                "<b>Transactional Email Pipeline:</b> Dispatches automated email notifications upon contact request submission, approval, rejection, and admin match confirmations."
+                "<b>Similarity Ranking Algorithm:</b> Built a matching engine that scores potential case matches (0–100%) based on item attributes and location parameters.",
+                "<b>Contact Approval Workflow:</b> Implemented a contact-request feature that hides personal details publicly until both parties explicitly approve communication.",
+                "<b>Administrative Verification:</b> Developed admin verification queues for reviewing potential matches and dispatched automated transactional emails."
             ]
         },
         'blazor-ebook': {
-            title: "Blazor E-Book Shelf Platform",
-            tech: "Blazor Server, .NET 9, EF Core, SQL Server, LINQ, Bootstrap",
-            description: "A high-performance digital library engine and subscription management portal built with modern Blazor Server (.NET 9).",
+            title: "Blazor E-Book Shelf — Digital Library Platform",
+            tech: "Blazor Server · .NET 9 · EF Core · SQL Server · LINQ",
+            description: "A digital book reading and subscription management web application built with Blazor Server (.NET 9).",
             features: [
-                "<b>Interactive Reader Component:</b> Custom component architecture for real-time chapter rendering, user bookmarks, and reading history.",
-                "<b>Admin & Subscription Back-Office:</b> Complete administrative control over book catalogs, subscription tier enforcement, user role assignments, and site dynamic banners.",
-                "<b>Role-Based Access Control (RBAC):</b> Enforces strict authorization policies across Readers, Authors, and System Administrators.",
-                "<b>Database & Query Optimization:</b> Leveraged Entity Framework Core 9 and LINQ projection queries for zero-latency data fetching."
+                "<b>LINQ & Query Optimization:</b> Optimized EF Core queries using projections and indexing to eliminate N+1 queries and reduce data retrieval overhead.",
+                "<b>Interactive Reader Component:</b> Created custom Blazor components for chapter rendering, user bookmarks, and reading history.",
+                "<b>Role-Based Authorization:</b> Implemented Role-Based Access Control (RBAC) across Readers, Authors, and Administrators."
             ]
         },
         'razor-portfolio': {
-            title: "Razor Pages Portfolio & Content Management System",
-            tech: "ASP.NET Core Razor Pages, .NET 8, EF Core, SQL Server, Custom CSS",
-            description: "A production-grade dynamic portfolio solution featuring an integrated administrative back-office system.",
+            title: "Portfolio CMS — Admin Back-Office System",
+            tech: "ASP.NET Core Razor Pages · .NET 8 · EF Core · SQL Server",
+            description: "A dynamic portfolio website featuring a secure administrative back-office system.",
             features: [
-                "<b>Dynamic Admin Dashboard:</b> Password-authenticated back-office enabling real-time CRUD operations over project showcases, skill matrices, and client inquiries.",
-                "<b>Relational Database Architecture:</b> Structured SQL Server schema managed via Entity Framework Core Code-First migrations.",
-                "<b>Security & Anti-Forgery:</b> Form token validation, XSS input sanitization, and strict request filtering."
+                "<b>Admin Dashboard:</b> Built a password-protected administrative back-office using ASP.NET Core Razor Pages for real-time project and contact management.",
+                "<b>Relational Database Architecture:</b> Structured SQL Server schema managed via Entity Framework Core migrations with anti-forgery form validation."
             ]
         },
         'mvc-blog': {
-            title: "ASP.NET Core MVC Blog Platform & RESTful APIs",
-            tech: "ASP.NET Core MVC, .NET 8, EF Core, SQL Server, RESTful APIs, ViewModels",
-            description: "Full-stack publishing engine emphasizing Clean Architecture principles, loose coupling, and RESTful service exposure.",
+            title: "ASP.NET Core Blog — Publishing Platform & Web API",
+            tech: "ASP.NET Core MVC · .NET 8 · Web API · EF Core · ViewModels",
+            description: "A blogging web application emphasizing Clean Architecture, decoupled ViewModels, and RESTful API endpoints.",
             features: [
-                "<b>Clean Architecture Alignment:</b> Engineered using decoupled ViewModels, service abstractions, and repository pattern layers.",
-                "<b>REST API Endpoints:</b> Exposed RESTful web endpoints for external feed indexing, article search, and automated content publishing.",
-                "<b>User Authentication & Threaded Comments:</b> Secure user registration, cookie/session management, and multi-level article comments."
+                "<b>Clean Architecture:</b> Applied Clean Architecture and repository patterns to separate business logic from data access layers.",
+                "<b>REST API Integration:</b> Exposed Web API endpoints for article listing, category filtering, and user authentication."
             ]
         },
         'nha-tolling': {
-            title: "NHA E-Tolling Systems Solution (In Progress)",
-            tech: "C#, .NET Core, SQL Server, High-Throughput Audit Engine",
-            description: "An automated electronic toll collection management backend currently under active development, designed for high-concurrency highway transaction logging and vehicle fee computation.",
+            title: "NHA E-Tolling System (In Progress)",
+            tech: "C# · .NET Core · SQL Server · Transaction Backend",
+            description: "An automated electronic toll collection backend currently under development for highway transit logging and fee calculation.",
             features: [
-                "<b>Transaction Audit Engine:</b> Real-time data logging for vehicle passages, classification algorithms, and toll fee calculation.",
-                "<b>Reconciliation & Analytics:</b> Automated daily toll gate reconciliation, shift reporting, and administrative revenue verification."
+                "<b>Transaction Logging:</b> Developing backend transaction logic designed to handle high-volume vehicle transit logs.",
+                "<b>Reconciliation & Analytics:</b> Designing database schemas for daily toll gate reconciliation, shift reporting, and revenue auditing."
             ]
         },
         'notes-pro': {
-            title: "NotesPro Cross-Platform Application",
-            tech: ".NET 10 MAUI, C#, SQLite Local Storage, MVVM Pattern",
-            description: "Next-generation cross-platform desktop and mobile note-taking software application built on .NET MAUI framework.",
+            title: "NotesPro — Cross-Platform MAUI App",
+            tech: ".NET 10 MAUI · C# · SQLite Local Storage · MVVM Pattern",
+            description: "A cross-platform desktop and mobile note-taking software application built on .NET MAUI framework.",
             features: [
-                "<b>Single C# Codebase:</b> Deployed natively across Android and Windows Desktop using unified .NET MAUI UI declarations.",
-                "<b>Local SQLite Persistence:</b> Embedded database synchronization, instant keyword indexing, and rich note categorizations."
+                "<b>Cross-Platform Codebase:</b> Built a note-taking application targeting Windows and Android from a single C# codebase.",
+                "<b>Offline Local Persistence:</b> Embedded SQLite database synchronization, keyword search indexing, and MVVM data binding patterns."
             ]
         },
         'vuln-scanner': {
-            title: "Information Security Vulnerability Scanner",
-            tech: "C++, Socket Programming, Multi-threaded Auditing Protocols",
-            description: "Collaborative cybersecurity diagnostic application built to perform automated network port audits and flag system vulnerability vectors.",
+            title: "IS Vulnerability Audit Scanner",
+            tech: "C++ · Socket Programming · Security Audit Protocols",
+            description: "A cybersecurity utility built to perform automated network port audits and flag configuration flaws.",
             features: [
-                "<b>Port Scanning Engine:</b> Rapid multi-threaded TCP/UDP socket scanner identifying active network services and open pathways.",
-                "<b>Security Rule Audit:</b> Automated verification against known vulnerability signatures and misconfigured server service banners."
+                "<b>Port Scanner:</b> Multi-threaded C++ TCP/UDP socket scanner identifying active network services and open service banners.",
+                "<b>Rule Verification:</b> Automated checks against known vulnerability signatures and server configurations."
             ]
         },
         'cxx-raylib': {
-            title: "Data Structures Game Engine (Raylib C++)",
-            tech: "C++, Raylib Graphics Engine, Custom Data Structures (Queues)",
+            title: "Queue-Based Game Engine",
+            tech: "C++ · Raylib Graphics Engine · Custom FIFO Queues",
             description: "2D game rendering engine demonstrating data structure fundamentals and real-time game loop state management.",
             features: [
-                "<b>Algorithmic Queue Implementation:</b> Utilized custom FIFO queue data structures to compute snake segment movement and spatial collision matrices.",
-                "<b>Graphics & Audio Integration:</b> High frame-rate 2D graphics rendering and low-latency input event loop via Raylib library."
+                "<b>FIFO Queue Data Structures:</b> Utilized custom queue structures for spatial movement calculations, maintaining a smooth 60 FPS rendering loop.",
+                "<b>Event Loop:</b> Low-latency frame-rate management and collision detection via Raylib library."
             ]
         }
     };
